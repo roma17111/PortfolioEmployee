@@ -8,6 +8,19 @@ import java.util.OptionalInt;
 public class Main {
    private static Employee[] employees = new Employee[10];
 
+    public static void getIndexSallary(int percent) {
+        Arrays.stream(employees)
+                .forEach(employee -> employee
+                        .setSalary((employee.getSalary() / 100 * percent)+ employee.getSalary()));
+    }
+
+    public static void getEmployess() {
+        System.out.println();
+        System.out.println("Список всех сотрудников: ");
+        Arrays.stream(employees).map(Employee::getFullName).forEach(System.out::println);
+    }
+
+
     public static void getAverageSallary() {
         int avg = Arrays.stream(employees)
                 .mapToInt(Employee::getSalary)
@@ -88,6 +101,9 @@ public class Main {
         getMinSallary();
         getMaxSallary();
         getAverageSallary();
+        getEmployess();
+        getIndexSallary(10);
+        printAllEmployees();
 
     }
 }
