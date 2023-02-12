@@ -8,7 +8,7 @@ import lombok.*;
 @EqualsAndHashCode
 @NonNull
 public class Employee {
-    private static int count;
+    private static int count =1;
 
     private final int id;
     private final String fullName;
@@ -24,9 +24,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Сотрудник" +
-                "ФИО" + fullName + '\n' +
-                "Отдел: " + department +'\n' +
-                "Зарплата: " + salary +'\n';
+        return  id+". ФИО " + fullName + '\n' +
+                "Отдел: " + department.getNumberOfDepartment() +'\n' +
+                "Зарплата: " + salary+ " руб." +'\n';
     }
 }

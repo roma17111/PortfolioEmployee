@@ -1,8 +1,16 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class Main {
+   private static Employee[] employees = new Employee[10];
+
+    public static void printAllEmployees() {
+        Arrays.stream(employees).forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
-        Employee[] employees = new Employee[10];
+
         employees[0] = new Employee("Якименко Роман Эдуардович",
                 Department.DEPARTMENT1,
                 20000);
@@ -33,5 +41,6 @@ public class Main {
         employees[9] = new Employee("Яковенко Владлена Игоревна",
                 Department.DEPARTMENT5,
                 52000);
+        printAllEmployees();
     }
 }
