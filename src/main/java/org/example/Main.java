@@ -2,10 +2,18 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
 public class Main {
    private static Employee[] employees = new Employee[10];
+
+    public static void getAverageSallary() {
+        int avg = Arrays.stream(employees)
+                .mapToInt(Employee::getSalary)
+                .sum();
+        System.out.println("Средняя зарплата сотрудников: " + avg/ employees.length);
+    }
 
     public static void getMinSallary() {
         String s = null;
@@ -79,6 +87,7 @@ public class Main {
         getSumAllSallaryes();
         getMinSallary();
         getMaxSallary();
+        getAverageSallary();
 
     }
 }
