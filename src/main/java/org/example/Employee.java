@@ -12,10 +12,10 @@ public class Employee {
 
     private final int id;
     private final String fullName;
-    private Department department;
+    private int department;
     private int salary;
 
-    public Employee(String fullName, Department department, int salary) {
+    public Employee(String fullName, int department, int salary) {
         this.id = count++;
         this.fullName = fullName;
         this.department = department;
@@ -25,7 +25,7 @@ public class Employee {
     @Override
     public String toString() {
         return  id+". ФИО " + fullName + '\n' +
-                "Отдел: " + department.getNumberOfDepartment() +'\n' +
+                "Отдел: " + department +'\n' +
                 "Зарплата: " + salary+ " руб." +'\n';
     }
 }
