@@ -10,7 +10,7 @@ import lombok.*;
 public class Employee {
     private static int count;
 
-    private int id;
+    private final int id;
     private final String fullName;
     private Department department;
     private int salary;
