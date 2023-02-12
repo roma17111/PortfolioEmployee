@@ -8,7 +8,7 @@ import java.util.OptionalInt;
 public class Main {
    private static Employee[] employees = new Employee[10];
 
-    public static void findEmployeeByDepartment(int department) {
+    public static void findMinEmployeeByDepartment(int department) {
         String s = null;
         int min = Arrays.stream(employees)
                 .filter(employee -> employee.getDepartment() == department)
@@ -18,6 +18,19 @@ public class Main {
                 s = employee.getFullName();
         }
         System.out.println("Минимальная зарплата по отделу "+ department + ": " + min);
+        System.out.println("ФИО сотрудника: " +s);
+    }
+
+    public static void findMaxEmployeeByDepartment(int department) {
+        String s = null;
+        int max = Arrays.stream(employees)
+                .filter(employee -> employee.getDepartment() == department)
+                .mapToInt(Employee::getSalary   ).max().getAsInt();
+        for (Employee employee : employees) {
+            if (employee.getSalary()== max && employee.getDepartment()== department)
+                s = employee.getFullName();
+        }
+        System.out.println("Максимальная зарплата по отделу "+ department + ": " + max);
         System.out.println("ФИО сотрудника: " +s);
     }
 
@@ -117,7 +130,9 @@ public class Main {
         getEmployess();
         getIndexSallary(10);
         printAllEmployees();
-        findEmployeeByDepartment(1);
+        findMinEmployeeByDepartment(1);
+        findMaxEmployeeByDepartment(4);
+
 
     }
 }
