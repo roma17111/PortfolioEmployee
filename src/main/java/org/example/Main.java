@@ -5,6 +5,14 @@ import java.util.Arrays;
 public class Main {
    private static Employee[] employees = new Employee[10];
 
+   public static void getSumAllSallaryes() {
+      int sum = Arrays.stream(employees)
+               .mapToInt(Employee::getSalary)
+               .sum();
+       System.out.println("Сумма затрат на зарплату " +sum+ " руб.");
+   }
+
+
     public static void printAllEmployees() {
         Arrays.stream(employees).forEach(System.out::println);
     }
@@ -42,5 +50,6 @@ public class Main {
                 Department.DEPARTMENT5,
                 52000);
         printAllEmployees();
+        getSumAllSallaryes();
     }
 }
