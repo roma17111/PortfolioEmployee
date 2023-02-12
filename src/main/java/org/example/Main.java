@@ -1,9 +1,25 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class Main {
    private static Employee[] employees = new Employee[10];
+
+    public static void getMinSallary() {
+        String s = null;
+        int min = Arrays.stream(employees).mapToInt(Employee::getSalary).min()
+                .getAsInt();
+        for (Employee employee : employees) {
+            if (min == employee.getSalary()) {
+                s = employee.getFullName() + " " + employee.getSalary();
+            }
+        }
+        System.out.println("Минимальная зарплата сотрудника " + s);
+        }
+
+
 
    public static void getSumAllSallaryes() {
       int sum = Arrays.stream(employees)
@@ -21,7 +37,7 @@ public class Main {
 
         employees[0] = new Employee("Якименко Роман Эдуардович",
                 Department.DEPARTMENT1,
-                20000);
+                200000);
         employees[1] = new Employee("Якименко Вероника Владимировна",
                 Department.DEPARTMENT1,
                 100000);
@@ -51,5 +67,7 @@ public class Main {
                 52000);
         printAllEmployees();
         getSumAllSallaryes();
+        getMinSallary();
+
     }
 }
