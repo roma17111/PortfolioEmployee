@@ -19,7 +19,17 @@ public class Main {
         System.out.println("Минимальная зарплата сотрудника " + s);
         }
 
-
+    public static void getMaxSallary() {
+        String s = null;
+        int max = Arrays.stream(employees).mapToInt(Employee::getSalary).max()
+                .getAsInt();
+        for (Employee employee : employees) {
+            if (max == employee.getSalary()) {
+                s = employee.getFullName() + " " + employee.getSalary();
+            }
+        }
+        System.out.println("Максимальная зарплата сотрудника " + s);
+    }
 
    public static void getSumAllSallaryes() {
       int sum = Arrays.stream(employees)
@@ -68,6 +78,7 @@ public class Main {
         printAllEmployees();
         getSumAllSallaryes();
         getMinSallary();
+        getMaxSallary();
 
     }
 }
