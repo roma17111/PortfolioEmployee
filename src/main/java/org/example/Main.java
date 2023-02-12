@@ -8,6 +8,32 @@ import java.util.OptionalInt;
 public class Main {
     private static Employee[] employees = new Employee[10];
 
+    public static void findHighSallary(int n) {
+        System.out.println();
+        System.out.println("Сотрудники с зарплатой больше или равно " + n);
+        Arrays.stream(employees)
+                .filter(employee -> employee.getSalary()>=n)
+                .forEach(System.out::println);
+    }
+
+    public static void findLowSallary(int n) {
+        System.out.println();
+        System.out.println("Сотрудники с зарплатой меньше " + n);
+        Arrays.stream(employees)
+                .filter(employee -> employee.getSalary()<n)
+                .forEach(System.out::println);
+    }
+
+
+    public static void printEmployeeByDepartment(int d) {
+        System.out.println("Сотрудники департамента " + d+":");
+        Arrays.stream(employees)
+                .filter(employee -> employee.getDepartment() == d)
+                .map(employee -> employee.getFullName()+employee.getSalary())
+                .forEach(System.out::println);
+
+    }
+
 
     public static void indexSallaryByDep(int dep, int percent) {
         Arrays.stream(employees)
@@ -161,6 +187,9 @@ public class Main {
         getAvgByDepartmant(5);
         indexSallaryByDep(2,20);
         printAllEmployees();
+        printEmployeeByDepartment(3);
+        findLowSallary(100000);
+        findHighSallary(100000);
 
     }
 }
