@@ -1,10 +1,16 @@
 package org.example;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class EmployeeBook {
 
     private List<Employee> employees = new ArrayList<>();
+
+    public void printAllEmployeesBYDepartments() {
+        System.out.println(employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment)));
+    }
 
     public Employee changeEmployeeByFio(String fio, int salary, int department) {
         for (Employee employee : employees) {

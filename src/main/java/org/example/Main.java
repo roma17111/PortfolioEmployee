@@ -41,5 +41,6 @@ public class Main {
         employeeBook.changeEmployeeByFio("Якименко Роман Эдуардович", 1000200, 5);
         employeeBook.printAllEmployees();
         employeeBook.getSumAllSallaryes();
+        employeeBook.printAllEmployeesBYDepartments();
     }
 }
