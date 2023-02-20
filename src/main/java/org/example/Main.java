@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
+import java.util.*;
 
 public class Main {
     private static Employee[] employees = new Employee[10];
@@ -12,7 +9,7 @@ public class Main {
         System.out.println();
         System.out.println("Сотрудники с зарплатой больше или равно " + n);
         Arrays.stream(employees)
-                .filter(employee -> employee.getSalary()>=n)
+                .filter(employee -> employee.getSalary() >= n)
                 .forEach(System.out::println);
     }
 
@@ -20,32 +17,28 @@ public class Main {
         System.out.println();
         System.out.println("Сотрудники с зарплатой меньше " + n);
         Arrays.stream(employees)
-                .filter(employee -> employee.getSalary()<n)
+                .filter(employee -> employee.getSalary() < n)
                 .forEach(System.out::println);
     }
-
 
     public static void printEmployeeByDepartment(int d) {
-        System.out.println("Сотрудники департамента " + d+":");
+        System.out.println("Сотрудники департамента " + d + ":");
         Arrays.stream(employees)
                 .filter(employee -> employee.getDepartment() == d)
-                .map(employee -> employee.getFullName()+employee.getSalary())
+                .map(employee -> employee.getFullName() + employee.getSalary())
                 .forEach(System.out::println);
 
     }
-
 
     public static void indexSallaryByDep(int dep, int percent) {
         Arrays.stream(employees)
-                .filter(employee -> employee.getDepartment()==dep)
-                .forEach(employee -> employee.setSalary(employee.getSalary()/100*percent+
+                .filter(employee -> employee.getDepartment() == dep)
+                .forEach(employee -> employee.setSalary(employee.getSalary() / 100 * percent +
                         employee.getSalary()));
-
     }
 
-
     public static void getAvgByDepartmant(int departmant) {
-        double avg = (int)Arrays.stream(employees)
+        double avg = (int) Arrays.stream(employees)
                 .filter(employee -> employee.getDepartment() == departmant)
                 .mapToInt(Employee::getSalary)
                 .average().getAsDouble();
@@ -60,29 +53,21 @@ public class Main {
     }
 
     public static void findMinEmployeeByDepartment(int department) {
-        String s = null;
-        int min = Arrays.stream(employees)
-                .filter(employee -> employee.getDepartment() == department)
-                .mapToInt(Employee::getSalary).min().getAsInt();
-        for (Employee employee : employees) {
-            if (employee.getSalary() == min && employee.getDepartment() == department)
-                s = employee.getFullName();
-        }
-        System.out.println("Минимальная зарплата по отделу " + department + ": " + min);
-        System.out.println("ФИО сотрудника: " + s);
+        Employee employee = Arrays.stream(employees)
+                .filter(employee1 -> employee1.getDepartment()==department)
+                .min(Comparator.comparingInt(Employee::getSalary))
+                .get();
+        System.out.println("Минимальная зарплата по отделу " + department + ": " + employee.getSalary());
+        System.out.println("ФИО сотрудника: " + employee.getFullName());
     }
 
     public static void findMaxEmployeeByDepartment(int department) {
-        String s = null;
-        int max = Arrays.stream(employees)
-                .filter(employee -> employee.getDepartment() == department)
-                .mapToInt(Employee::getSalary).max().getAsInt();
-        for (Employee employee : employees) {
-            if (employee.getSalary() == max && employee.getDepartment() == department)
-                s = employee.getFullName();
-        }
-        System.out.println("Максимальная зарплата по отделу " + department + ": " + max);
-        System.out.println("ФИО сотрудника: " + s);
+        Employee employee = Arrays.stream(employees)
+                .filter(employee1 -> employee1.getDepartment()==department)
+                .max(Comparator.comparingInt(Employee::getSalary))
+                .get();
+        System.out.println("Максимальная зарплата по отделу " + department + ": " + employee.getSalary());
+        System.out.println("ФИО сотрудника: " + employee.getFullName());
     }
 
     public static void getIndexSallary(int percent) {
@@ -106,27 +91,19 @@ public class Main {
     }
 
     public static void getMinSallary() {
-        String s = null;
-        int min = Arrays.stream(employees).mapToInt(Employee::getSalary).min()
-                .getAsInt();
-        for (Employee employee : employees) {
-            if (min == employee.getSalary()) {
-                s = employee.getFullName() + " " + employee.getSalary();
-            }
-        }
-        System.out.println("Минимальная зарплата сотрудника " + s);
+        System.out.println();
+        Employee employee = Arrays.stream(employees)
+                .min(Comparator.comparingInt(Employee::getSalary))
+                .get();
+        System.out.println("Минимальная зарплата сотрудника " + employee);
     }
 
     public static void getMaxSallary() {
-        String s = null;
-        int max = Arrays.stream(employees).mapToInt(Employee::getSalary).max()
-                .getAsInt();
-        for (Employee employee : employees) {
-            if (max == employee.getSalary()) {
-                s = employee.getFullName() + " " + employee.getSalary();
-            }
-        }
-        System.out.println("Максимальная зарплата сотрудника " + s);
+        System.out.println();
+        Employee employee = Arrays.stream(employees)
+                .max(Comparator.comparingInt(Employee::getSalary))
+                .get();
+        System.out.println("Максимальная зарплата сотрудника " + employee);
     }
 
     public static void getSumAllSallaryes() {
@@ -185,7 +162,7 @@ public class Main {
         findMaxEmployeeByDepartment(4);
         getSumSalaryFromDepartment(3);
         getAvgByDepartmant(5);
-        indexSallaryByDep(2,20);
+        indexSallaryByDep(2, 20);
         printAllEmployees();
         printEmployeeByDepartment(3);
         findLowSallary(100000);
