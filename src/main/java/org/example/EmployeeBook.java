@@ -6,6 +6,15 @@ public class EmployeeBook {
 
     private List<Employee> employees = new ArrayList<>();
 
+    public Employee changeEmployeeByFio(String fio, int salary, int department) {
+        for (Employee employee : employees) {
+            if (employee.getFullName().equals(fio))
+                employee.setDepartment(department);
+            employee.setSalary(salary);
+        }
+        return new Employee(fio,department,salary);
+    }
+
     public void deleteEmployeeById(int id) {
         employees.removeIf(employee -> employee.getId() == id);
     }
