@@ -1,13 +1,14 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class EmployeeBook {
 
     private List<Employee> employees = new ArrayList<>();
+
+    public void deleteEmployeeById(int id) {
+        employees.removeIf(employee -> employee.getId() == id);
+    }
 
     public void addEmployee(Employee employee) {
         employees.add(employee);

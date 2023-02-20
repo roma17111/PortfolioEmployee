@@ -38,7 +38,7 @@ public class Main {
         employeeBook.addEmployee(new Employee("Яковенко Владлена Игоревна",
                 5,
                 52000));
-
+        employeeBook.deleteEmployeeById(1);
         employeeBook.printAllEmployees();
         employeeBook.getSumAllSallaryes();
     }
