@@ -18,7 +18,11 @@ public class Employee {
     public Employee(String fullName, int department, int salary) {
         this.id = count++;
         this.fullName = fullName;
-        this.department = department;
+        if (department < 0 || department > 5) {
+            throw new IllegalArgumentException();
+        } else {
+            this.department = department;
+        }
         this.salary = salary;
     }
 
