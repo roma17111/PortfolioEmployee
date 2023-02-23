@@ -67,7 +67,6 @@ public class EmployeeBook {
         System.out.println("Средняя зарплата сотрудников: " + avg / employees.size());
     }
 
-
     public void getEmployess() {
         System.out.println();
         System.out.println("Список всех сотрудников: ");
@@ -79,7 +78,6 @@ public class EmployeeBook {
                 .forEach(employee -> employee
                         .setSalary((employee.getSalary() / 100 * percent) + employee.getSalary()));
     }
-
 
     public void findMaxEmployeeByDepartment(int department) {
         Employee employee = employees
@@ -138,7 +136,6 @@ public class EmployeeBook {
 
     }
 
-
     public void findLowSallary(int n) {
         System.out.println();
         System.out.println("Сотрудники с зарплатой меньше " + n);
@@ -190,8 +187,6 @@ public class EmployeeBook {
                 5,
                 52000));
         employeeBook.changeEmployeeByFio("Якименко Роман Эдуардович", 1000200, 5);
-        employeeBook.printAllEmployees();
-        employeeBook.getSumAllSallaryes();
-        employeeBook.printAllEmployeesBYDepartments();
     }
+
 }

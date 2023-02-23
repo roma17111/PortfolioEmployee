@@ -23,7 +23,11 @@ public class Employee {
         } else {
             this.department = department;
         }
-        this.salary = salary;
+        if (salary < 0) {
+            throw new IllegalArgumentException();
+        } else {
+            this.salary = salary;
+        }
     }
 
     @Override
